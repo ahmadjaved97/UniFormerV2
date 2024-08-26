@@ -28,7 +28,7 @@ FROZEN: False  # whether freeze backbone
 ## Training
 
 Our models are based on pretrained ViTs, and we use [CLIP](https://github.com/openai/CLIP) pretrained models by default:
-- Follow `extract_clip` to extract visual encoder from CLIP.
+- Follow `extract_clip` to extract visual encoder from CLIP. (Use the file `extract_clip/extract.py` or `extract_clip/extract.ipynb`)
 - Change `MODEL_PATH` in `slowfast/models/uniformerv2_model.py`.
 
 For training, you can simply run the training scripts in `exp` as follows:
