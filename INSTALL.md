@@ -2,8 +2,11 @@
 
 ## Requirements
 - Python >= 3.7
+  - (Used Python=3.10)
 - Numpy
 - PyTorch >= 1.9 (Acceleration for 3D depth-wise convolution)
+
+    - (Used PyTorch 1.11.0 `conda install pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 cudatoolkit=11.3 -c pytorch`)
 - [fvcore](https://github.com/facebookresearch/fvcore/): `pip install 'git+https://github.com/facebookresearch/fvcore'`
 - [torchvision](https://github.com/pytorch/vision/) that matches the PyTorch installation.
   You can install them together at [pytorch.org](https://pytorch.org) to make sure of this.
@@ -21,6 +24,8 @@
 - moviepy: (optional, for visualizing video on tensorboard) `conda install -c conda-forge moviepy` or `pip install moviepy`
 - PyTorchVideo: `pip install pytorchvideo`
 - Decord: `pip install decord`
+- Regex: `pip install regex`
+- Ftfy: `pip install ftfy`
 
 ## Build UniFormerV2
 
