@@ -10,6 +10,7 @@ import cv2
 import torch
 from iopath.common.file_io import g_pathmgr
 from torch.utils.data.distributed import DistributedSampler
+from torch.utils.data import RandomSampler
 
 from . import transform as transform
 
@@ -409,7 +410,7 @@ def create_sampler(dataset, shuffle, cfg):
     Returns:
         sampler (Sampler): the created sampler.
     """
-    sampler = DistributedSampler(dataset) if cfg.NUM_GPUS >= 1 else None
+    sampler = DistributedSampler(dataset) if cfg.NUM_GPUS > 1 else RandomSampler(dataset) #None
 
     return sampler
 
