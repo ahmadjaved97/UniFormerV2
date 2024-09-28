@@ -1,5 +1,7 @@
+#!/usr/bin/env python3
 import os
 import random
+import numpy as np
 import torch
 import torch.utils.data
 from iopath.common.file_io import g_pathmgr
@@ -70,12 +72,12 @@ class Hvu(torch.utils.data.Dataset):
             for clip_idx, path_label in enumerate(f.read().splitlines()):
                 path, label_str = path_label.split(self.cfg.DATA.PATH_LABEL_SEPARATOR)
                 labels = list(map(int, label_str.split('|')))  # Convert comma-separated labels to a list of ints
-                # one_hot_labels = [0] * int(self.cfg.MODEL.NUM_CLASSES)
-                one_hot_labels = torch.zeros(self.cfg.MODEL.NUM_CLASSES, dtype=torch.float32)
+                # one_hot_labels = torch.zeros(self.cfg.MODEL.NUM_CLASSES, dtype=torch.float32)
+                one_hot_labels = np.zeros((self.cfg.MODEL.NUM_CLASSES,))
 
                 # Set 1's at the positions specified in labels
-                for label in labels:
-                    one_hot_labels[label] = 1
+                for label in set(labels):
+                    one_hot_labels[label] = 1.0
                 
                 for idx in range(self._num_clips):
                     self._path_to_videos.append(os.path.join(self.cfg.DATA.PATH_PREFIX, path))
